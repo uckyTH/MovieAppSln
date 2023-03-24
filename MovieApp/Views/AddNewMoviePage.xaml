@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MovieApp.Views.AddNewMoviePage"
+             Title="AddNewMoviePage">
+    <VerticalStackLayout>
+        <Entry x:Name="EntName" Placeholder="Movie Name" Text="{Binding Name}" />
+
+        <Picker x:Name="picker"
+            Title="Select a Genre Movie"
+            TitleColor="red"
+            ItemsSource="{Binding Genres}"
+            ItemDisplayBinding="{Binding Genre}">
+
+        </Picker>
+
+        <Editor x:Name="EditDes" Text="{Binding Description}" Placeholder="Enter a description"/>
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Text="Image" Clicked="Image_Clicked" Grid.Row="0"/>
+            <Button Text="Save" Clicked="Save_Clicked" Grid.Row="1" />
+
+        </Grid>
+        <CollectionView x:Name="cvImages">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding .}" HeightRequest="100" WidthRequest="100" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>
